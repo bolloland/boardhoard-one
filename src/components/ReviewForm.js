@@ -14,8 +14,8 @@ const ReviewForm = ({game}) => {
       
         const handleChange = (event) => {
             // console.log(game.id)
-            console.log(event.target.name, "event.target.name")
-            console.log(event.target.value, "event.target.value")
+            // console.log(event.target.name, "event.target.name")
+            // console.log(event.target.value, "event.target.value")
           const name = event.target.name;
           const value = event.target.value;
           setReviewData(values => ({...values, [name]: value}))
@@ -30,14 +30,13 @@ const ReviewForm = ({game}) => {
         const handleSubmit = (event) => {
           event.preventDefault();
         //   submitNewReview(reviewData, navigate, props.game)
-            
-
-           
-          navigate(`/`)
-          alert("You added a new review!");
-          setSubmittedData(true)
-        }
-
+        game.reviews = [{...game.reviews}, {reviewData}]
+    
+        alert("You added a new review!");
+        navigate(`/`)
+        setSubmittedData(true)   
+        console.log(game, "this game?")
+    }
         useEffect(() => {
 
         }, [submittedData])
