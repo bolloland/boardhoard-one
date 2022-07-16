@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { GamesContext } from '../ContextProvider';
 
 
-const ReviewForm = (props) => {
+const ReviewForm = ({game}) => {
     const gamesContext = useContext(GamesContext)
     const {games, setGames} = gamesContext
     const navigate = useNavigate()
@@ -13,18 +13,25 @@ const ReviewForm = (props) => {
         const [submittedData, setSubmittedData] = useState(false)
       
         const handleChange = (event) => {
+            // console.log(game.id)
+            console.log(event.target.name, "event.target.name")
+            console.log(event.target.value, "event.target.value")
           const name = event.target.name;
           const value = event.target.value;
           setReviewData(values => ({...values, [name]: value}))
         }
+        console.log(reviewData, "reviewData")
 
-        const submitNewReview = () => {
-            
-        }
+
+        
+
+
       
         const handleSubmit = (event) => {
           event.preventDefault();
-          submitNewReview(reviewData, navigate, props.game)
+        //   submitNewReview(reviewData, navigate, props.game)
+            
+
            
           navigate(`/`)
           alert("You added a new review!");
@@ -44,7 +51,7 @@ const ReviewForm = (props) => {
                 value={reviewData.title || ""} 
                 placeholder="title your review"
                 onChange={handleChange}
-            /> <br/>
+            /><br/>
             <input 
                 type="text" 
                 name="rev_text" 
@@ -62,8 +69,7 @@ const ReviewForm = (props) => {
             <input 
                 type="hidden" 
                 name="game_id" 
-                value={reviewData.game_id = props.game.id} 
-                placeholder="place review here"
+                value={reviewData.game_id = game.id} 
                 onChange={handleChange}
                 />
           
