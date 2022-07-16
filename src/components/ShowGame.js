@@ -11,7 +11,7 @@ const ShowGame = () => {
     const {games} = gamesContext
     
     const location = useLocation()
-    console.log(location, "location")
+    // console.log(location, "location")
 
     let game = location.state.gamedata
     const [showRevForm, setShowRevForm] = useState(false)
@@ -23,7 +23,7 @@ const ShowGame = () => {
         return str.replace(/(&quot\;)/gm,"\"")
     }
 
-    console.log(game, "show-game")
+    // console.log(game, "show-game")
 
     return (
         <div className="one-game">
@@ -38,8 +38,8 @@ const ShowGame = () => {
             <button className="button" onClick={revealForm}>Add A Review  </button>
             {showRevForm ? <ReviewForm game={game}/> : !showRevForm }
 
-            Reviews To Date: {game && game.reviews && game.reviews.length}<br></br>
-            {game && game.reviews && game.reviews.map(rev => <Review rev={rev} />)}
+            {/* Reviews To Date: {game && game.reviews && game.reviews.length}<br></br>
+            {game && game.reviews && game.reviews.map(rev => <Review rev={rev} />)} */}
             
         </div>
     )
